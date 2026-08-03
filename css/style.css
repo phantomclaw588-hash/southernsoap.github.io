@@ -96,3 +96,92 @@ nav a:hover {
     font-weight:bold;
 
 }
+.featured {
+    height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+
+    background-image:url("images/obsidian-background.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+
+.featured-overlay {
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+
+.soap-left,
+.soap-right {
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    z-index:2;
+}
+
+
+.soap-left {
+    left:8%;
+}
+
+
+.soap-right {
+    right:8%;
+}
+
+
+.soap-left img,
+.soap-right img {
+
+    width:220px;
+
+    filter:
+    drop-shadow(0 25px 25px black);
+
+}
+
+
+.featured-content {
+
+    position:relative;
+    z-index:3;
+
+    color:white;
+
+    text-align:center;
+
+}
+
+
+.featured-content h1 {
+
+    font-size:70px;
+    letter-spacing:5px;
+
+}
+
+
+.featured-content a {
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 40px;
+
+    background:white;
+
+    color:black;
+
+    text-decoration:none;
+
+    border-radius:5px;
+
+}
