@@ -1,28 +1,29 @@
-const heroScroll = document.getElementById('heroScroll');
+const hero = document.getElementById('heroScroll');
 const title = document.querySelector('.hero-title');
-const soapColumns = document.querySelectorAll('.soap-column');
+const columns = document.querySelectorAll('.soap-column');
 
-function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
+function clamp(n, min, max) {
+    return Math.max(min, Math.min(n, max));
 }
 
 function updateHero() {
-    const rect = heroScroll.getBoundingClientRect();
-    const scrollRange = heroScroll.offsetHeight - window.innerHeight;
-    const scrolled = clamp(-rect.top, 0, scrollRange);
-    const progress = scrollRange > 0 ? scrolled / scrollRange : 0;
+    const rect = hero.getBoundingClientRect();
+    const heroHeight = hero.offsetHeight;
+    const viewHeight = window.innerHeight;
+    const totalScroll = heroHeight - viewHeight;
 
-    const titleFade = clamp(1 - progress * 2.2, 0, 1);
-    title.style.opacity = titleFade;
-    title.style.transform = `translateY(${progress * -50}px)`;
+    const currentScroll = clamp(-rect.top, 0, totalScroll);
+    const progress = totalScroll > 0 ? currentScroll / totalScroll : 0;
 
-    soapColumns.forEach((el) => {
-        const isLeft = el.classList.contains('left');
-        const baseOffset = isLeft ? -70 : 70;
+    title.style.opacity = String(clamp(1 - progress * 2.0, 0, 1));
+    title.style.transform = `translateY(${progress * -40}px)`;
 
-        const fadeIn = clamp((progress - 0.12) / 0.38, 0, 1);
-        el.style.opacity = fadeIn;
-        el.style.transform = `translateX(${baseOffset * (1 - fadeIn)}px)`;
+    columns.forEach((column) => {
+        const side = column.classList.contains('left') ? -80 : 80;
+        const fade = clamp((progress - 0.10) / 0.35, 0, 1);
+
+        column.style.opacity = String(fade);
+        column.style.transform = `translateX(${side * (1 - fade)}px)`;
     });
 }
 
