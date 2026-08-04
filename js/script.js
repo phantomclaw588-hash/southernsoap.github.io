@@ -1,4 +1,4 @@
-const hero = document.getElementById('heroScroll');
+/*const hero = document.getElementById('heroScroll');
 const title = document.querySelector('.hero-title');
 const columns = document.querySelectorAll('.soap-column');
 
