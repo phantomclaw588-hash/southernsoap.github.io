@@ -19,11 +19,12 @@ function updateHero() {
     title.style.transform = `translateY(${progress * -40}px)`;
 
     columns.forEach((column) => {
-        const side = column.classList.contains('left') ? -80 : 80;
-        const fade = clamp((progress - 0.10) / 0.35, 0, 1);
+        const isLeft = column.classList.contains('left');
+        const baseX = isLeft ? -180 : 180;
+        const fade = clamp((progress - 0.12) / 0.38, 0, 1);
 
         column.style.opacity = String(fade);
-        column.style.transform = `translateX(${side * (1 - fade)}px)`;
+        column.style.transform = `translateX(${baseX * (1 - fade)}px)`;
     });
 }
 
