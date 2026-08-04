@@ -53,7 +53,7 @@ nav a:hover {
 }
 
 .hero-scroll {
-    height: 220vh;
+    height: 260vh;
     position: relative;
 }
 
@@ -111,10 +111,11 @@ nav a:hover {
     margin: 0 0 2rem;
     color: #f7f2ea;
     text-shadow: 0 8px 22px rgba(0,0,0,0.45);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.15s linear, transform 0.15s linear;
     opacity: 1;
     transform: translateY(0);
 }
+
 .soap-grid {
     width: 100%;
     display: flex;
@@ -131,7 +132,7 @@ nav a:hover {
     gap: 1.2rem;
     opacity: 0;
     transform: translateX(0);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.15s linear, transform 0.15s linear;
     will-change: opacity, transform;
     z-index: 2;
 }
@@ -147,12 +148,12 @@ nav a:hover {
 
 .soap-column.left {
     align-self: flex-end;
-    transform: translateX(-60px);
+    transform: translateX(-80px);
 }
 
 .soap-column.right {
     align-self: flex-end;
-    transform: translateX(60px);
+    transform: translateX(80px);
 }
 
 .shop-button {
@@ -251,6 +252,6 @@ footer {
     }
 
     .hero-scroll {
-        height: 250vh;
+        height: 280vh;
     }
 }
