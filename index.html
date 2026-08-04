@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obsidian Soap Co</title>
-
+    <title>Pretty Clean Soap</title>
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,8 +12,7 @@
 <body>
 
 <header>
-    <div class="logo">Obsidian Soap Co</div>
-
+    <div class="logo">Pretty Clean Soap</div>
     <nav>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
@@ -26,31 +23,34 @@
 
 <section class="hero-scroll" id="heroScroll">
     <div class="hero-sticky">
+        <div class="hero-bg">
+            <img src="images/download.jpg" alt="Obsidian background">
+        </div>
+
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
             <h1 class="hero-title">Obsidian Soap</h1>
 
-            <div class="hero-art">
-                <div class="side-images left">
+            <div class="soap-grid">
+                <div class="soap-column left">
                     <img src="images/christiancmccorbeti-skincare-6664582_1920.jpg" alt="Handmade soap">
                     <img src="images/lavkachudes-honey-7330657_1920.jpg" alt="Honey soap">
                 </div>
 
-                <div class="center-image">
-                    <img src="images/download.jpg" alt="Obsidian soap">
-                    <a href="shop.html" class="shop-button">Shop Now</a>
-                </div>
-
-                <div class="side-images right">
+                <div class="soap-column right">
                     <img src="images/download (1).jpg" alt="Handmade soap">
                     <img src="images/phuonghoangthuy-handmade-soap-4926844_1920.jpg" alt="Handmade soap">
                 </div>
             </div>
+
+            <a href="shop.html" class="shop-button">Shop Now</a>
         </div>
     </div>
 </section>
 
 <section class="about">
-    <h2>Why Obsidian?</h2>
+    <h2>Why Pretty Clean?</h2>
     <p>
         Every bar is handcrafted in small batches using skin-loving oils and carefully selected ingredients.
         No mass production. Just beautiful soap.
@@ -58,33 +58,9 @@
 </section>
 
 <footer>
-    <p>© 2026 Obsidian Soap Co</p>
+    <p>© 2026 Pretty Clean Soap</p>
 </footer>
 
-<script>
-    const heroScroll = document.getElementById('heroScroll');
-    const title = document.querySelector('.hero-title');
-    const sideImages = document.querySelectorAll('.side-images');
-
-    function updateHero() {
-        const rect = heroScroll.getBoundingClientRect();
-        const progress = Math.min(Math.max(-rect.top / window.innerHeight, 0), 1);
-
-        title.style.opacity = 1 - progress * 1.4;
-        title.style.transform = `translateY(${progress * -30}px)`;
-
-        sideImages.forEach(el => {
-            const baseOffset = el.classList.contains('left') ? -40 : 40;
-            const fadeStart = 0.18;
-            const fadeProgress = Math.min(Math.max((progress - fadeStart) / 0.55, 0), 1);
-
-            el.style.opacity = fadeProgress;
-            el.style.transform = `translateX(${baseOffset * (1 - fadeProgress)}px)`;
-        });
-    }
-
-    window.addEventListener('scroll', updateHero);
-    window.addEventListener('load', updateHero);
-</script>
-
+<script src="js/script.js"></script>
 </body>
+</html>
