@@ -31,3 +31,4 @@ function updateHero() {
 window.addEventListener('scroll', updateHero, { passive: true });
 window.addEventListener('resize', updateHero);
 window.addEventListener('load', updateHero);
+//
