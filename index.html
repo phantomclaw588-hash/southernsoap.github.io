@@ -9,133 +9,82 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header>
-
-    <div class="logo">
-        Pretty Clean Soap
-    </div>
+    <div class="logo">Pretty Clean Soap</div>
 
     <nav>
-
         <a href="index.html">Home</a>
-
         <a href="shop.html">Shop</a>
-
         <a href="about.html">About</a>
-
         <a href="contact.html">Contact</a>
-
     </nav>
-
 </header>
 
-<section class="hero">
+<section class="hero-scroll" id="heroScroll">
+    <div class="hero-sticky">
+        <div class="hero-content">
+            <h1 class="hero-title">Obsidian Soap</h1>
 
-    <div class="hero-background"></div>
-<div class="soap-left">
+            <div class="hero-art">
+                <div class="side-images left">
+                    <img src="images/christiancmccorbeti-skincare-6664582_1920.jpg" alt="Handmade soap">
+                    <img src="images/lavkachudes-honey-7330657_1920.jpg" alt="Honey soap">
+                </div>
 
-    <img src="images/christiancmccorbeti-skincare-6664582_1920.jpg" alt="Handmade soap">
-    
-    <img src="images/download (1).jpg" alt="Handmade soap">
+                <div class="center-image">
+                    <img src="images/download.jpg" alt="Obsidian soap">
+                    <a href="shop.html" class="shop-button">Shop Now</a>
+                </div>
 
-</div>
-
-
-<div class="soap-right">
-
-    <img src="images/lavkachudes-honey-7330657_1920.jpg" alt="Honey soap">
-    
-    <img src="images/phuonghoangthuy-handmade-soap-4926844_1920.jpg" alt="Handmade soap">
-
-</div>
-
-
-</section>
-
-<section class="featured">
-
-    <h2>Featured Soaps</h2>
-
-    <div class="products">
-
-        <div class="card">
-
-            <img src="images/soap1.jpg" alt="Charcoal Swirl">
-
-            <h3>Charcoal Swirl</h3>
-
-            <p>
-                Activated charcoal with elegant white swirls.
-            </p>
-
-            <span>$8.00</span>
-
+                <div class="side-images right">
+                    <img src="images/download (1).jpg" alt="Handmade soap">
+                    <img src="images/phuonghoangthuy-handmade-soap-4926844_1920.jpg" alt="Handmade soap">
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-
-            <img src="images/soap2.jpg" alt="Lavender Fields">
-
-            <h3>Lavender Fields</h3>
-
-            <p>
-                Relaxing lavender with creamy shea butter.
-            </p>
-
-            <span>$8.00</span>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/soap3.jpg" alt="Honey Oat">
-
-            <h3>Honey Oat</h3>
-
-            <p>
-                Honey, oats, and goat milk for soft skin.
-            </p>
-
-            <span>$8.00</span>
-
-        </div>
-
     </div>
-
 </section>
 
 <section class="about">
-
     <h2>Why Pretty Clean?</h2>
-
     <p>
-
-        Every bar is handcrafted in small batches using
-        skin-loving oils and carefully selected ingredients.
-
-        No mass production.
-
-        Just beautiful soap.
-
+        Every bar is handcrafted in small batches using skin-loving oils and carefully selected ingredients.
+        No mass production. Just beautiful soap.
     </p>
-
 </section>
 
 <footer>
-
-    <p>
-
-        © 2026 Pretty Clean Soap
-
-    </p>
-
+    <p>© 2026 Pretty Clean Soap</p>
 </footer>
 
+<script>
+    const heroScroll = document.getElementById('heroScroll');
+    const title = document.querySelector('.hero-title');
+    const sideImages = document.querySelectorAll('.side-images');
+
+    function updateHero() {
+        const rect = heroScroll.getBoundingClientRect();
+        const progress = Math.min(Math.max(-rect.top / window.innerHeight, 0), 1);
+
+        title.style.opacity = 1 - progress * 1.4;
+        title.style.transform = `translateY(${progress * -30}px)`;
+
+        sideImages.forEach(el => {
+            const baseOffset = el.classList.contains('left') ? -40 : 40;
+            const fadeStart = 0.18;
+            const fadeProgress = Math.min(Math.max((progress - fadeStart) / 0.55, 0), 1);
+
+            el.style.opacity = fadeProgress;
+            el.style.transform = `translateX(${baseOffset * (1 - fadeProgress)}px)`;
+        });
+    }
+
+    window.addEventListener('scroll', updateHero);
+    window.addEventListener('load', updateHero);
+</script>
+
 </body>
-</html>
