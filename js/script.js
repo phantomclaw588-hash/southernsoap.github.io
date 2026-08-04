@@ -1,23 +1,34 @@
-const heroScroll = document.getElementById('heroScroll');
-const title = document.querySelector('.hero-title');
-const soapColumns = document.querySelectorAll('.soap-column');
+document.addEventListener('DOMContentLoaded', () => {
+    const heroScroll = document.getElementById('heroScroll');
+    const title = document.querySelector('.hero-title');
+    const soapColumns = document.querySelectorAll('.soap-column');
 
-function updateHero() {
-    const rect = heroScroll.getBoundingClientRect();
-    const progress = Math.min(Math.max(-rect.top / window.innerHeight, 0), 1);
+    function updateHero() {
+        const rect = heroScroll.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
 
-    title.style.opacity = 1 - progress * 1.35;
-    title.style.transform = `translateY(${progress * -28}px)`;
+        const total = viewportHeight;
+        const rawProgress = (-rect.top) / total;
+        const progress = Math.min(Math.max(rawProgress, 0), 1);
 
-    soapColumns.forEach(el => {
-        const offset = el.classList.contains('left') ? -60 : 60;
-        const fadeStart = 0.18;
-        const fadeProgress = Math.min(Math.max((progress - fadeStart) / 0.55, 0), 1);
+        title.style.opacity = String(Math.max(1 - progress * 1.35, 0));
+        title.style.transform = `translateY(${progress * -30}px)`;
 
-        el.style.opacity = fadeProgress;
-        el.style.transform = `translateX(${offset * (1 - fadeProgress)}px)`;
-    });
-}
+        soapColumns.forEach((el, index) => {
+            const baseOffset = el.classList.contains('left') ? -80 : 80;
 
-window.addEventListener('scroll', updateHero);
-window.addEventListener('load', updateHero);
+            const start = index === 0 ? 0.12 : 0.22;
+            const end = index === 0 ? 0.42 : 0.55;
+
+            let local = (progress - start) / (end - start);
+            local = Math.min(Math.max(local, 0), 1);
+
+            el.style.opacity = String(local);
+            el.style.transform = `translateX(${baseOffset * (1 - local)}px) scale(${0.98 + local * 0.02})`;
+        });
+    }
+
+    updateHero();
+    window.addEventListener('scroll', updateHero, { passive: true });
+    window.addEventListener('resize', updateHero);
+});
