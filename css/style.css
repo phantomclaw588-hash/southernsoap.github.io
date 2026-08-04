@@ -105,15 +105,7 @@ nav a:hover {
     text-align: center;
 }
 
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 6vw, 6rem);
-    margin: 0 0 2rem;
-    color: #f7f2ea;
-    text-shadow: 0 8px 22px rgba(0,0,0,0.45);
-    transition: opacity 0.15s linear, transform 0.15s linear;
-    opacity: 1;
-    transform: translateY(0);
+
 }
 
 .soap-grid {
